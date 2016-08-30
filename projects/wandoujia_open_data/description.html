@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Android Apps Usage Data: Data Description</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+        <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    #wrapper {
+      overflow: hidden;
+    }
+    #content > div {
+      float: left;
+    }
+    .row {
+      margin-top: 30px;
+    }
+    .thumbnail {
+      margin-bottom: 0;
+    }
+    #about ul.images li {
+      display: block;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      float: left;
+      margin: 5px 20px 5px 0;
+    }
+    #about h2 {
+      clear: both;
+    }
+    .col-xs-6-1 {
+      width: 100%;
+      float: left;
+      position: relative;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;    
+    }
+    .logo{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <span class="logo">
+        <div style = "float:left;margin-right:15px"><img src="images/pku.png" height="60" width="60"/></div>
+        <div style = "float:left"><p style = "text-align:center"><font size = "7">Android App-Usage Data: Description</font></p></div>
+        <div style = "float:left"><img src="images/wandoujia.png" height="75" width="75"/></div>
+      </span>
+      <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="#Introduction" rel="content" >Introduction</a></li>
+        <li><a href="#Anonymization" rel="content">Anonymization</a></li>
+        <li><a href="#description" rel="content">Data Description</a></li>
+      </ul>
+      <div id="wrapper">
+        <div id= "content">
+          <div id="Introduction">
+            <div class="row">
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/0.jpg" height="418" width="287"/>
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/1.jpg"  />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/2.jpg" />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/3.jpg" />
+                </div>
+              </div>
+            </div>
+            <h2>Introduction</h2>
+            <p>This data set is user behavioral profile of using Android applications (apps for short). The dataset is collected from about 100,000 Chinese users, ranging from 1st May, 2014 to 30th September, 2014. Our dataset is provided by <a href="http://www.wandoujia.com/">Wandoujia</a>, which is one of the leading Android marketplaces in China. Wandoujia presents a native Android app which provides management tools to search, download, update, and uninstall apps on their Android devices. In addition, the Wandoujia management app can also record the daily network activities such as the traffic volume and connection time of Wi-Fi/cellular per app, and distinguishes the traffic and time in terms of foreground and background, respectively. The Wandoujia management app generates the daily network statistics only when the users explicitly grant, and all the users' privacy are hidden in this data set. </p>
+            <p>The data set contains 3 parts:</p>
+            <ul>
+              <li><p><b>Management Activity Data:</b> The app management activities include downloading, updating, and uninstalling apps. Each entry in the dataset represents a management action that is done via the Wandoujia management app.</p></li>
+              <li><p><b>Network Trace Data:</b> If the user allows the Wandoujia management app to collect the network activity data, the Wandoujia management app can make daily network statistics of each app. The Wandoujia management app distinguisheshes the network trace data in terms of both Wi-Fi and cellular (2G/3G/LTE), respectively. The Wandoujia management app does not record the detail of user's network usage at session level. Instead, the management app summarizes the total daily traffic and access time of an app by examining flows at the TCP-level. In particular, the traffic and access time generated from foreground and background are treated separately. The Wandoujia management app determines whether an app is running at foreground or background by probing the Android system stack for every 2 seconds. If an app is on the top of the Android system stack in a probe, it will be considered as running at foreground in the past 2 seconds. So in the network activity data there are 8 aspects of information in total, i.e.,</p>
+                <center><p>2 <b><i>metrics</i></b> (access time and traffic) * 2 <b><i>modes</i></b> (Wi-Fi and Cellular) * 2 <b><i>states</i></b> (foreground and background).</p></li></center>
+              <li><p><b>Device Model Price:</b> The Wandoujia management app also records each user's device model type, e.g., Samsung Galaxy Note 2, Samsung S3, etc. This data set provides the price of top 500 most popular device models.</p></li>
+            </ul>
+          </div>
+          <div id="Anonymization">
+            <div class="row">
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/4.jpg" />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/5.jpg" />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/6.jpg" />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/7.jpg" />
+                </div>
+              </div>
+            </div>
+            <h2>Anonymization</h2>
+            <p>To protect the privacy of users, app developers, and phone manufactures, we anonymize all the specific information of users' ID, apps' package names, and device models' names. Instead, we use three groups of simple identifiers: "<b>aXX</b>", "<b>uXX</b>", "<b>dXX</b>" to represent apps, users, and device models. "XX" here means a number. </p>
+            <p>For example, in this data set there are 100,000 users in total. The names of the users are from "u1" to "u100000". For apps and device models, the identifiers are similar. </p>
+          </div>
+          <div id="description">
+            <div class="row">
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/8.png" />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/9.jpeg" />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/10.jpg" />
+                </div>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                  <img src="images/11.jpg" />
+                </div>
+              </div>
+            </div>
+            <h2>Data Description</h2>
+            <div class="row">
+              <div class="col-xs-6-1">
+                <h4>Management Activity Data</h4>
+                <p>The management activity data has 4 fields, separated by tab. The meaning and detailed explanation of each field are listed as follows:</p>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <th>Package Name</th>
+                      <td>The app's identifier.</td>
+                    </tr>
+                    <tr>
+                      <th>User ID</th>
+                      <td>The user's identifier.</td>
+                    </tr>
+                    <tr>
+                      <th>Timestamp</th>
+                      <td>The standard UNIX timestamp which represents the time this action takes.</td>
+                    </tr>
+                    <tr>
+                      <th>Action Type</th>
+                      <td>The type of this action. "d" for download, "u" for uninstallation, and "p" for update.</td>
+                    </tr>
+                    <tr><td></td><td></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-6-1">
+                <p>Here are some samples of the management data:</p>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <th>Package Name</th>
+                      <th>User ID</th>
+                      <th>Timestamp</th>
+                      <th>Action Type</th>
+                    </tr>
+                    <tr>
+                      <td>a26181</td>
+                      <td>u60041</td>
+                      <td>1400828657</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u74068</td>
+                      <td>1404586456</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u69603</td>
+                      <td>1404020051</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u34054</td>
+                      <td>1403752000</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u68056</td>
+                      <td>1404302635</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u4508</td>
+                      <td>1406042173</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u92219</td>
+                      <td>1403275867</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u21869</td>
+                      <td>1404196181</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u36081</td>
+                      <td>1402962139</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td>a54910</td>
+                      <td>u94277</td>
+                      <td>1403944085</td>
+                      <td>d</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-6-1">
+                <h4>Network Trace Data</h4>
+                <p>The network trace data has 12 fields, separated by tab. The meaning and detailed explanation of each field are listed as follows:</p>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <th>Package Name</th>
+                      <td>The app's identifier.</td>
+                    </tr>
+                    <tr>
+                      <th>User ID</th>
+                      <td>The user's identifier.</td>
+                    </tr>
+                    <tr>
+                      <th>Device Model</th>
+                      <td>The device model this user uses in this day.</td>
+                    </tr>
+                    <tr>
+                      <th>Date</th>
+                      <td>The date of this data entry.</td>
+                    </tr>
+                    <tr>
+                      <th>B-Cellular Traffic</th>
+                      <td>Background cellular traffic usage. (Byte)</td>
+                    </tr>
+                    <tr>
+                      <th>B-Cellular Time</th>
+                      <td>Background cellular network connection time. (ms)</td>
+                    </tr>
+                    <tr>
+                      <th>F-Cellular Traffic</th>
+                      <td>Foreground cellular traffic usage. (Byte)</td>
+                    </tr>
+                    <tr>
+                      <th>F-Cellular Time</th>
+                      <td>Foreground cellular network connection time. (ms)</td>
+                    </tr>
+                    <tr>
+                      <th>B-WiFi Traffic</th>
+                      <td>Background Wi-Fi traffic usage. (Byte)</td>
+                    </tr>
+                    <tr>
+                      <th>B-WiFi Time</th>
+                      <td>Background Wi-Fi network connection time. (ms)</td>
+                    </tr>
+                    <tr>
+                      <th>F-WiFi Traffic</th>
+                      <td>Foreground Wi-Fi traffic usage. (Byte)</td>
+                    </tr>
+                    <tr>
+                      <th>F-WiFi Time</th>
+                      <td>Foreground Wi-Fi network connection time. (ms)</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-6-1">
+                <p>Here are some samples of the management data:</p>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <th>Package Name</th>
+                      <th>User ID</th>
+                      <th>Device Model</th>
+                      <th>Date</th>
+                      <th>B-Cellular Traffic</th>
+                      <th>B-Cellular Time</th>
+                      <th>F-Cellular Traffic</th>
+                      <th>F-Cellular Time</th>
+                      <th>B-WiFi Traffic</th>
+                      <th>B-WiFi Time</th>
+                      <th>F-WiFi Traffic</th>
+                      <th>F-WiFi Time</th>
+                    </tr>
+                    <tr>
+                      <td>a23993</td><td>u22931</td><td>d124</td><td>20140501</td><td>409</td>
+                      <td>26024043</td><td>0</td><td>0</td><td>1367852</td><td>47577039</td>
+                      <td>0</td><td>0</td>
+                    </tr>
+                    <tr>
+                      <td>a41627</td><td>u61779</td><td>d81</td><td>20140501</td><td>5146</td>
+                      <td>12805723</td><td>48026</td><td>1737587</td><td>417076</td><td>51881170</td>
+                      <td>451272</td><td>17468826</td>
+                    </tr>
+                    <tr>
+                      <td>a62989</td><td>u92612</td><td>d122</td><td>20140501</td><td>72237</td>
+                      <td>6177444</td><td>0</td><td>0</td><td>1026726</td><td>36899549</td>
+                      <td>0</td><td>0</td>
+                    </tr>
+                    <tr>
+                      <td>a60580</td><td>u23810</td><td>d281</td><td>20140501</td><td>43524</td>
+                      <td>83380802</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                    </tr>
+                    <tr>
+                      <td>a50910</td><td>u10684</td><td>d169</td><td>20140501</td><td>48996</td>
+                      <td>6552519</td><td>0</td><td>3752</td><td>9275</td><td>42853245</td>
+                      <td>0</td><td>0</td>
+                    </tr>
+                    <tr>
+                      <td>a68976</td><td>u35808</td><td>d457</td><td>20140501</td><td>4272</td>
+                      <td>1200932</td><td>0</td><td>0</td><td>54554</td><td>46364827</td>
+                      <td>0</td><td>0</td>
+                    </tr>
+                    <tr>
+                      <td>a44188</td><td>u89111</td><td>d213</td><td>20140501</td><td>101406</td>
+                      <td>14124281</td><td>410</td><td>746</td><td>47797160</td><td>27274310</td>
+                      <td>2414</td><td>3480</td>
+                    </tr>
+                    <tr>
+                      <td>a50578</td><td>u35014</td><td>d396</td><td>20140501</td><td>1463</td>
+                      <td>14309656</td><td>0</td><td>0</td><td>11111</td><td>44141604</td>
+                      <td>0</td><td>0</td>
+                    </tr>
+                    <tr>
+                      <td>a26986</td><td>u14402</td><td>d395</td><td>20140501</td><td>2922</td>
+                      <td>46771226</td><td>0</td><td>0</td><td>0</td><td>32489421</td><td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>a60580</td><td>u14402</td><td>d395</td><td>20140501</td><td>130177</td>
+                      <td>41821063</td><td>2596596</td><td>4979019</td><td>3040</td><td>25636676</td>
+                      <td>786204</td><td>6864177</td>
+                    </tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-xs-6-1">
+                  <h4>Model Price Data</h4>
+                  <p>The model price data has only 2 fields, separated by tab. The meaning and detailed explanation of each field are listed as follows:</p>
+                  <table class="table table-hover">
+                    <tbody>
+                      <tr>
+                        <th>Device Name</th>
+                        <td>The name of the device.</td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                        <td>The price of the device. (Yuan)</td>
+                      </tr>
+                      <tr><td></td><td></td></tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div class="col-xs-6-1">
+                <p>Here are some samples of the model price data:</p>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr><th>Device Name</th><th>Price</th></tr>
+                        <tr><td>d122</td><td>4000</td></tr>
+                        <tr><td>d361</td><td>5000</td></tr>
+                        <tr><td>d308</td><td>5000</td></tr>
+                        <tr><td>d396</td><td>5700</td></tr>
+                        <tr><td>d356</td><td>5700</td></tr>
+                        <tr><td>d328</td><td>2000</td></tr>
+                        <tr><td>d318</td><td>2000</td></tr>
+                        <tr><td>d104</td><td>5500</td></tr>
+                        <tr><td>d125</td><td>5200</td></tr>
+                        <tr><td>d121</td><td>5700</td></tr>
+                        <tr><td></td><td></td></tr>
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var Height = new Array('#Introduction', '#Anonymization', '#description');
+        var heights = new Array($(Height[0]).height(), $(Height[1]).height(), $(Height[2]).height());
+        var num=0;
+        $('#content').width(parseInt($('#wrapper').width() * $('#content div').length));
+        $('#content > div').width($('#wrapper').width());
+        $('#wrapper').css('margin-bottom', heights[0]-heights[2] +50);
+        $('ul.nav li a').click(function () {
+          $('ul.nav li').removeClass('active');
+          $(this).parent().addClass('active');
+          console.log($('li.active').index());
+          num = $('li.active').index();
+          $('#wrapper').css('margin-bottom', heights[num]-heights[2] +50);     
+          var margin = $(this).parent().index() * $('#wrapper').width() * -1;
+          $('#content').animate({marginLeft:margin + 'px'}, {duration:700});
+          return false;
+        });
+
+        $(window).resize(function() { 
+            heights = new Array($(Height[0]).height(), $(Height[1]).height(), $(Height[2]).height()); 
+            $('#wrapper').css('margin-bottom', heights[num]-heights[2] +50);
+            $('#content').width(parseInt($('#wrapper').width() * $('#content div').length));
+            $('#content > div').width($('#wrapper').width());
+            var margin = $('li.active').index() * $('#wrapper').width() * -1;
+            $('#content').css('margin-left', margin + 'px');
+        });
+      });
+    </script>
+  </body>
+</html>
