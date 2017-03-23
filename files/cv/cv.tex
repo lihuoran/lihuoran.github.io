@@ -1,0 +1,180 @@
+\documentclass[a4paper,10pt]{article}
+
+%A Few Useful Packages
+\usepackage{marvosym}
+\usepackage{fontspec} 					%for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[big]{layaureo} 				%better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
+
+%Setup hyperref package, and colours for links
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+%%% modified for Karol Kozioł for ShareLaTeX use
+\setmainfont[
+SmallCapsFont = Fontin-SmallCaps.otf,
+BoldFont = Fontin-Bold.otf,
+ItalicFont = Fontin-Italic.otf
+]
+{Fontin.otf}
+%%%
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+%Tweak a bit the top margin
+%\addtolength{\voffset}{-1.3cm}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%-------------WATERMARK TEST [**not part of a CV**]---------------
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+%--------------------BEGIN DOCUMENT----------------------
+\begin{document}
+
+%WATERMARK TEST [**not part of a CV**]---------------
+%\font\wm=''Baskerville:color=787878'' at 8pt
+%\font\wmweb=''Baskerville:color=FF1493'' at 8pt
+%{\wm 
+%	\begin{textblock}{1}(0,0)
+%		\rotatebox{-90}{\parbox{500mm}{
+%			Typeset by Alessandro Plasmati with \XeTeX\  \today\ for 
+%			{\wmweb \href{http://www.aleplasmati.comuv.com}{aleplasmati.comuv.com}}
+%		}
+%	}
+%	\end{textblock}
+%}
+
+\pagestyle{empty} % non-numbered pages
+
+\font\fb=''[cmr10]'' %for use with \LaTeX command
+
+%--------------------TITLE-------------
+\par{\centering
+		{\Huge Huoran \textsc{Li}
+	}\bigskip\par}
+
+%--------------------SECTIONS-----------------------------------
+%Section: Personal Data
+\section{Personal Information}
+
+\begin{tabular}{rl}
+    \textsc{Place and Date of Birth:} & Beijing, China  | March 10 1992 \\
+    \textsc{Address:}   & 1434, Science Building NO.1, Peking University, Beijing, China \\
+    \textsc{Email:}     & \href{mailto:lihuoran@pku.edu.cn}{lihuoran@pku.edu.cn} \\
+    \textsc{Homepage:}  & \href{http://homepage.lihuoran.me/}{homepage.lihuoran.me} \\
+\end{tabular}
+
+%Section: Work Experience at the top
+%\section{Work Experience}
+%\begin{tabular}{r|p{11cm}}
+% \emph{Current} & Trader at \textsc{Enoi} s.p.a., Milan \\\textsc{Jan 2009}&\emph{Physical Natural Gas Trading}\\&\footnotesize{Provided analysis of spreads, in particular time and location spreads, with emphasis on trading opportunities on the curve, also taking into account the availability of storage facilities. Became familiar with logistic implications of physical gas trading and developed knowledge of continental virtual hubs for gas exchange.}\\\multicolumn{2}{c}{} \\
+% \textsc{Jul-Oct 2008} & 1\textsuperscript{st} year Analyst at \textsc{Lehman Brothers}, London \\&\emph{Commodities Structured Trading}\\&\footnotesize{Developed spreadsheets for risk analysis on exotic derivatives on a wide array of commodities (\textit{ags, oils, precious} and \textit{base metals}), managed blotter and secondary trades on structured notes, liaised with Middle Office, Sales and Structuring for bookkeeping.}\\\multicolumn{2}{c}{} \\
+%\textsc{Summer 2007} & Summer Intern at \textsc{Lehman Brothers}, \emph{Capital Markets}\\&\footnotesize{Received pre-placed offer from the Exotics Trading Desk as a result of very positive review. Rated ``\emph{truly distinctive}'' for Analytical Skills and Teamwork.}
+%\end{tabular}
+
+%Section: Education
+\section{Education}
+
+\begin{tabular}{rl}	
+	\textsc{Sept. 2014 - \emph{Current}} &Ph.D. Student in \textsc{Computer Science} \\
+	 & \normalsize\textbf{Peking University}, Beijing, China \\
+	 & \small Advisor: Prof. \href{http://sei.pku.edu.cn/~meih/index_en.html}{Hong Mei} \\
+	 & \small Co-Advisor: Prof. \href{http://sei.pku.edu.cn/~liuxzh/}{Xuanzhe Liu} \\
+	 & \\
+	 
+	\textsc{Dec. 2016 - \emph{Current}} &Visiting Scholar in \textsc{School of Information} \\
+	 & \normalsize\textbf{University of Michigan}, Ann Arbor, USA \\
+	 & \small Advisor: Prof. \href{http://www-personal.umich.edu/~qmei/}{Qiaozhu Mei} \\
+	 & \\
+
+	\textsc{Sept. 2010 - July 2014} & Bachelor Degree in \textsc{Computer Science} \\
+	 & \normalsize\textbf{Peking University}, Beijing, China \\
+	 & \\
+\end{tabular}
+
+%Section: Scholarships and additional info
+\section{Selected Scholarships and Awards}
+\begin{tabular}{rl}
+ \textsc{Mar.} 2017 & 2017-2018 IBM Ph.D. Fellowship \\
+ \textsc{Oct.} 2016 & Merit Student of Peking University \\
+ \textsc{Oct.} 2015 & Tang Lixin Scholarship \\
+ \textsc{Oct.} 2013 & Tung OOCL Scholarship \\
+ \textsc{Oct.} 2012 & 8086 Alumni Scholarship \\
+ \textsc{Oct.} 2015 & Pacemaker to Merit Student of Peking University \\
+ \textsc{July} 2013 & \emph{1st Prize}, the 4th Lan Qiao Software Design Contest \\
+
+ 
+ %\textsc{June} 2006 & {\textsc{Gmat}\textregistered}\setmainfont[SmallCapsFont=Fontin-SmallCaps.otf]{Fontin.otf}: 730 (\textsc{q:50;v:39}) 96\textsuperscript{th} percentile; \textsc{awa}: 6.0/6.0 (89\textsuperscript{th} percentile)
+\end{tabular}
+
+\section{Publications}
+
+\begin{center}
+\begin{large}
+$\sim\sim\sim$2017$\sim\sim\sim$
+\end{large}
+\end{center}
+
+\begin{itemize}
+	\item Xuanzhe Liu, \textbf{\underline{Huoran Li}}, Xuan Lu, Tao Xie, Qiaozhu Mei, Feng Feng, and Hong Mei. ``Understanding Diverse Usage Patterns from Large-Scale Appstore-Service Profiles'', \textit{in ACM Transactions on Software Engineering. Accepted to appear}  (\textbf{TSE'17}).
+	\item Xuanzhe Liu, Wei Ai, \textbf{\underline{Huoran Li}}, Jian Tang, Gang Huang, Feng Feng, and Qiaozhu Mei. ``Derive User Preferences of Mobile Apps from their Management Activities'', \textit{in ACM Transactions on Information Systems. Accepted to appear}  (\textbf{TOIS'17}).
+\end{itemize}
+
+\begin{center}
+\begin{large}
+$\sim\sim\sim$2016$\sim\sim\sim$
+\end{large}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{\underline{Huoran Li}}, Wei Ai, Xuanzhe Liu, Jian Tang, Gang Huang, Feng Feng, Qiaozhu Mei. ``Voting with Their Feet: Inferring User Preferences from App Management Activities'', \textit{in Proceedings of 25th International World Wide Web Conference} (\textbf{WWW'16}).
+	\item Xuan Lu, Xuanzhe Liu, \textbf{\underline{Huoran Li}}, Tao Xie, Dan Hao, Qiaozhu Mei, Gang Huang, Feng Feng. ``PRADA: Prioritizing Android Devices for Apps by Mining Large-Scale Usage Data'', in \textit{Proceedings of 38th International Conference on Software Engineering} (\textbf{ICSE'16}).
+	\item Xuan Lu, Xuanzhe Liu, \textbf{\underline{Huoran Li}}, Tao Xie, Qiaozhu Mei, Dan Hao, Gang Huang, Feng Feng. ``Mining Usage Data from Large-Scale Android Users: Challenges and Opportunities'', In \textit{Proceedings of the Third ACM International Conference on Mobile Software Engineering and Systems} (\textbf{MobileSoft'16}).
+	\item Wei Yang, Xusheng Xiao, Dengfeng Li, \textbf{\underline{Huoran Li}}, Xuanzhe Liu, Haoyu Wang, Yao Guo, and Tao Xie. ``Security Analytics for Mobile Apps: Achievements and Challenges''. \textit{Journal of Cyber Security (in Chinese), 1(2), pages 1-14, April 2016} (\textbf{Journal of Cyber Security}).
+\end{itemize}
+
+\begin{center}
+\begin{large}
+$\sim\sim\sim$2015$\sim\sim\sim$
+\end{large}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{\underline{Huoran Li}}, Wei Ai, Xuanzhe Liu, Qiaozhu Mei, and Feng Feng, ``A Descriptive Analysis of a Large-Scale Collection of App Management Activities'', in \textit{Proceedings of the 24th International Conference on World Wide Web Companion (\textbf{WWW'15})}. 
+	\item \textbf{\underline{Huoran Li}}, Xuan Lu, Xuanzhe Liu, Tao Xie, Kaigui Bian, Felix Xiaozhu Lin, Qiaozhu Mei, and Feng Feng, "Characterizing Smartphone Usage Patterns from Millions of Android Users", in \textit{Proceedings of the 2015 ACM SIGCOMM conference on Internet measurement conference (\textbf{IMC'15})}.
+\end{itemize}
+
+\section{Skills}
+\begin{tabular}{rl}
+ Programming Knowledge: & Python (Scikit-Learn, Numpy, Pandas, Matplotlib, Seaborn...), \\
+  & R (ggplot...), Linux, Ubuntu \\
+  & Java, C/C++ \\
+ Intermediate Knowledge: & Excel, Word, PowerPoint, {\fb \LaTeX} \\
+ Language Skills: & \textsc{English -} Fluent \\
+  & \textsc{Chinese -}  Mother tongue \\
+\end{tabular}
+
+\section{Interests}
+Math, Programming, Algorithm \\
+Software Engineering, Operating System, Data Mining, Machine Learning, Deep Learning \\
+Movie, Basketball, Drama
+
+\end{document}
