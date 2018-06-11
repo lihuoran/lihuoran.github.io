@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.link.linecolor0 {  
+  stroke: #000000;
+}
+
+.link.linecolor1 {  
+  stroke: #2F0003;
+}
+
+.link.linecolor2 {  
+  stroke: #5F0007;
+}
+
+.link.linecolor3 {  
+  stroke: #8F000B;
+}
+
+.link.linecolor4 {  
+  stroke: #BF000F;
+}
+
+#linecolor0 {  
+  fill: #000000;
+}
+
+#linecolor1 {  
+  fill: #2F0003;
+}
+
+#linecolor2 {  
+  fill: #5F0007;
+}
+
+#linecolor3 {  
+  fill: #8F000B;
+}
+
+#linecolor4 {  
+  fill: #BF000F;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+
+</style>
+<body>
+<script src="d3.v3.min.js"></script>
+<script>
+
+// http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
+var links = [
+{source: "0", target: "1", type: "linecolor2"},
+{source: "0", target: "8", type: "linecolor4"},
+{source: "0", target: "15", type: "linecolor0"},
+{source: "0", target: "21", type: "linecolor0"},
+{source: "0", target: "23", type: "linecolor0"},
+{source: "1", target: "0", type: "linecolor0"},
+{source: "1", target: "14", type: "linecolor0"},
+{source: "1", target: "20", type: "linecolor0"},
+{source: "2", target: "7", type: "linecolor0"},
+{source: "2", target: "8", type: "linecolor0"},
+{source: "3", target: "12", type: "linecolor0"},
+{source: "4", target: "15", type: "linecolor0"},
+{source: "6", target: "24", type: "linecolor0"},
+{source: "7", target: "2", type: "linecolor0"},
+{source: "7", target: "14", type: "linecolor0"},
+{source: "7", target: "23", type: "linecolor0"},
+{source: "8", target: "0", type: "linecolor0"},
+{source: "8", target: "2", type: "linecolor0"},
+{source: "8", target: "15", type: "linecolor0"},
+{source: "10", target: "12", type: "linecolor0"},
+{source: "10", target: "24", type: "linecolor0"},
+{source: "11", target: "18", type: "linecolor0"},
+{source: "12", target: "3", type: "linecolor0"},
+{source: "12", target: "10", type: "linecolor0"},
+{source: "13", target: "20", type: "linecolor0"},
+{source: "14", target: "1", type: "linecolor0"},
+{source: "14", target: "7", type: "linecolor0"},
+{source: "15", target: "0", type: "linecolor0"},
+{source: "15", target: "4", type: "linecolor0"},
+{source: "15", target: "8", type: "linecolor0"},
+{source: "15", target: "20", type: "linecolor2"},
+{source: "16", target: "22", type: "linecolor1"},
+{source: "16", target: "23", type: "linecolor0"},
+{source: "17", target: "22", type: "linecolor0"},
+{source: "18", target: "11", type: "linecolor0"},
+{source: "20", target: "1", type: "linecolor0"},
+{source: "20", target: "13", type: "linecolor1"},
+{source: "20", target: "15", type: "linecolor0"},
+{source: "20", target: "22", type: "linecolor0"},
+{source: "21", target: "0", type: "linecolor1"},
+{source: "22", target: "16", type: "linecolor0"},
+{source: "22", target: "17", type: "linecolor0"},
+{source: "22", target: "20", type: "linecolor2"},
+{source: "23", target: "0", type: "linecolor1"},
+{source: "23", target: "7", type: "linecolor0"},
+{source: "23", target: "16", type: "linecolor1"},
+{source: "24", target: "6", type: "linecolor0"},
+{source: "24", target: "10", type: "linecolor2"}
+];
+
+var nodes = {};
+
+// Compute the distinct nodes from the links.
+links.forEach(function(link) {
+  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+});
+
+var width = 960,
+    height = 500;
+
+var force = d3.layout.force()
+    .nodes(d3.values(nodes))
+    .links(links)
+    .size([width, height])
+    .linkDistance(60)
+    .charge(-300)
+    .on("tick", tick)
+    .start();
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// Per-type markers, as they don't inherit styles.
+svg.append("defs").selectAll("marker")
+    .data(["linecolor0", "linecolor1", "linecolor2", "linecolor3", "linecolor4"])
+  .enter().append("marker")
+    .attr("id", function(d) { return d; })
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+  .append("path")
+    .attr("d", "M0,-5L10,0L0,5");
+
+var path = svg.append("g").selectAll("path")
+    .data(force.links())
+  .enter().append("path")
+    .attr("class", function(d) { return "link " + d.type; })
+    .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+
+var circle = svg.append("g").selectAll("circle")
+    .data(force.nodes())
+  .enter().append("circle")
+    .attr("r", 6)
+    .call(force.drag);
+
+var text = svg.append("g").selectAll("text")
+    .data(force.nodes())
+  .enter().append("text")
+    .attr("x", 8)
+    .attr("y", ".31em")
+    .text(function(d) { return d.name; });
+
+// Use elliptical arc path segments to doubly-encode directionality.
+function tick() {
+  path.attr("d", linkArc);
+  circle.attr("transform", transform);
+  text.attr("transform", transform);
+}
+
+function linkArc(d) {
+  var dx = d.target.x - d.source.x,
+      dy = d.target.y - d.source.y,
+      dr = Math.sqrt(dx * dx + dy * dy);
+  return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+}
+
+function transform(d) {
+  return "translate(" + d.x + "," + d.y + ")";
+}
+
+</script>
